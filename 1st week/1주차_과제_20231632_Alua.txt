@@ -1,1 +1,23 @@
 
+echo 'Working directory'
+read dirname
+
+if [ -z "$dirname" ]
+then
+      echo 'There is no input'
+      exit 0
+fi
+if [ -d "$dirname" ]
+then
+      cd $dirname
+else
+      echo 'Directory does not exist'
+      exit 0
+fi
+
+for dir in *
+do
+    newname=$(echo "$dir" | tr "[a-z] [A-Z]" "[A-Z] [a-z]")
+    mv "$dir" "$newname"
+done
+
