@@ -1,0 +1,48 @@
+int recommend(RecNode *root)
+
+// 추천 시스템 트리 생성
+// 추천 블록이 자리할 this_field 선언
+// 추천 블록이 자리할 this_field 대입 	from root의 field
+
+// 각종 변수 초기화
+	// 미리 보이는 블럭의 추천배치 까지 고려했을 때 얻을 수 있는 최대 점수 max
+	// 현재 누적점수 score (=root의 score)
+	// 최대 회전가능 횟수 int rotation, blockY,blockX
+
+// switch문: 다음 블록의 형태에 따라 최대 rotation값 지정 (EX: 정사각형 블록은 rotation 1, 직선 블록은 rotation 2, r자는 rotation 4...)
+	// ppt 30pg의 1st loop문: 각 블록의 회전수에 대해서 <<< 이 부분을 위함.
+
+// for문: i =0~rotation			i는 current_rotation이라 생각.
+	// blockX 초기값: WIDTH/2-2;
+	// while문: 가장 왼쪽으로 블록을 이동하는 while문 (checkToMove 조건, blockX 이동)
+	// do-while문: (가장 왼쪽으로 이동 되었으니) 한칸씩 오른쪽으로 이동하는 while문
+		// 가장 아래쪽으로 블록을 이동하는 while문 (checkToMove 사용, blockY 이동, 위와 동일)
+		// score 계산: (AddBlockToField, DeleteLine)
+		// if문: score와 max를 비교하는 if. 만약 max값보다 크거나 같으면~~~
+			// VISIBLE_BLOCK이 1일때는 따로 경우를 생각해야 함.
+				// 내부 코드는 대충 rec_x, rec_y, rec_rotation값을 최신화 하는 것으로.
+			// max(=score) 업데이트
+		// 새로운 RecNode 노드 p생성 (선언, 동적할당 등)
+		// 새로운 RecNode 노드 (p)의 값 대입 (depth, score, field 등) !!! 주의: score는 현재 score, field는 AddBlockToField에 인수로 줬던 this_field. 그리고 depth는 root의 depth보다 1증가 시켜서 줘야 함.
+		// 새로운 RecNode 노드 (p)를 현재 root의 child에 추가.
+		// tmp_score = recommend(p)
+		// if문: 현재 노드의 depth가 VISIBLE_BLOCK보다 작으면 ~~~
+			// if문: recommend(p)의 반환값(tmp_score)이 max보다 크거나 같으면~~
+				// if문: tmp_score가 max와 같으면 ~~ 
+					// if문: root의 depth가 0과 같고, rec_y < blockY면 	// rec_x, y, rotation값 최신화
+				// else: (같지 않으면 (= 크면)
+					// max값 최신화, // if문: root의 depth가 0과 같고, rec_y < blockY면 	// rec_x, y, rotation값 최신화
+		// blockX 증가
+		// blockY 초기화
+		// score는 root의 score로 되돌리기
+		// 2중 for문: this field를 root의 filed로 되돌려놓기 
+// max값 반환.
+
+
+
+void DrawChange()
+...
+...
+...
+// 지역변수 recRoot 선언
+// recRoot 동적할당 및 값 대입 (depth, score는 0으로, f는 field 대입.)
