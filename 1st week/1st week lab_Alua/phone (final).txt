@@ -1,0 +1,23 @@
+if [ $# -eq 0 ]
+then
+   echo "Usage: phone seatchfor [...searchfor]"
+   echo "(You didn't tell me what you want to search for.)"
+else
+   echo "Choose one:
+           AND: 1
+           OR: 2"
+   read type
+   if [ $type -eq 1 ]
+   then
+       person="$@"
+       person=$(echo $person | sed 's/ /|/g')
+       egrep -i "$1" data | egrep -i "$2"| awk -f display.awk
+   elif [ $type -eq 2 ]
+   then
+       person="$@"
+       person=$(echo $person | sed 's/ /|/g')
+       egrep -i "$person" data | awk -f display.awk
+   fi
+fi
+
+
