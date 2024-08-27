@@ -1,4 +1,4 @@
-# comp-lab-1-CSE3013
+# comp-labka 1
 
 총 13주차+최종프로젝트
 
