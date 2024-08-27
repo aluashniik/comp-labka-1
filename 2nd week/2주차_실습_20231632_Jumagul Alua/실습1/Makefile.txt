@@ -1,0 +1,12 @@
+cc      =       gcc
+target  =       animal
+objects =       main.o  blackcow.o      dog.o   turtle.o
+
+$(target):      $(objects)
+        $(cc)   -o      $(target)       $(objects)
+
+$(objects)      :       animal.h
+
+.Phony  :       clean
+clean:
+        rm      $(target)       $(objects)
